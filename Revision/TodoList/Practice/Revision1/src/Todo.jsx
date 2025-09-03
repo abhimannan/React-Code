@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 function Todo() {
     const [list,setList] = useState([{task: "sample",id:uuidv4() , isDone: false}]);
     const [newTask,setNewTask] = useState("");
-
+    // adding new task when the user is click on the submit button
     let handleSubmit = (event)=>{
         event.preventDefault();
         setList((prev)=>{
@@ -12,11 +12,11 @@ function Todo() {
         });
         setNewTask("");
     }
-
+    // to store the input field value
     let handleChange = (event)=>{
         setNewTask(event.target.value);
     }   
-
+    // delete the task
     let handleDelete = (id)=>{
         setList((data)=>{
             return list.filter((data)=>{
@@ -24,15 +24,31 @@ function Todo() {
             })
         })
     }
-    let handleDone = ()=>{
+
+    let handleDoneAll = ()=>{
         return setList(list.map((prev)=>{
             return {
                 ...prev,
-                task : prev.task.toUpperCase()
+                isDone : true
             }
         }))
-        console.log(temp);
-        // currently working here
+    }
+
+    let handleDone = (id)=>{
+        setList((prev)=>{
+            return prev.map((data)=>{
+            if(data.id == id) {
+                return {
+                    ...data,
+                    isDone : true
+                }
+            }
+            else {
+                return data;
+            }
+        })
+        });
+        
     }
 
     return(
@@ -46,14 +62,15 @@ function Todo() {
             <ul>
                 {
                     list.map((data)=>{
-                        return <li key={data.id}><span>{data.task}</span>&nbsp;&nbsp;
+                        return <li key={data.id}><span style={data.isDone ? {textDecoration : "line-through"} : {}}>{data.task}</span>&nbsp;&nbsp;
                                 <button onClick={()=>handleDelete(data.id)}>Delete</button>
                                 &nbsp;&nbsp;
-                                <button onClick={handleDone}>Done</button>
+                                <button onClick={()=>handleDone(data.id)}>Done</button>
                         </li>
                     })
                 }
             </ul>
+            <button onClick={handleDoneAll}>Done All</button>
         </div>  
     )
 }
