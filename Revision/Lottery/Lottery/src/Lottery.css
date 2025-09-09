@@ -1,0 +1,98 @@
+/* 🎟️ Full page container */
+.lottery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  padding: 20px;
+}
+
+/* 🎟️ Lottery Card */
+.lottery-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px 40px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 600px;
+  width: 90%;
+  animation: fadeIn 0.8s ease;
+}
+
+/* 🎫 Ticket display (HORIZONTAL layout) */
+.ticket-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+/* 🎱 Lottery numbers styled like balls */
+.ticket-box span {
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #e84118);
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 18px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s, background 0.3s;
+}
+
+.ticket-box span:hover {
+  transform: scale(1.15) rotate(-5deg);
+  background: radial-gradient(circle at 30% 30%, #ff4757, #d63031);
+}
+
+/* 🎲 Button */
+.lottery-btn {
+  margin-top: 15px;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.lottery-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(118, 75, 162, 0.4);
+}
+
+.lottery-btn:active {
+  transform: scale(0.95);
+}
+
+/* 🎉 Winning message */
+.win-message {
+  margin-top: 25px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #27ae60;
+  animation: bounce 1s infinite;
+}
+
+/* ✨ Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
